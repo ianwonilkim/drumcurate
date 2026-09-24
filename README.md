@@ -8,4 +8,4 @@ DrumCurate contains 13,209 kick, snare, and hi-hat one-shot recordings curated b
 
 **Coming soon.**
 
-The dataset is being prepared for public release. Download links and documentation will be added to this page when the release is ready.
+The dataset is being prepared for public release. Download links, audio examples, and further details will be added to this page.
