@@ -1,0 +1,5 @@
+audio/
+*.zip
+.env
+__pycache__/
+*.pyc
