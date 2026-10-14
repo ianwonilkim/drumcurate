@@ -6,7 +6,9 @@ Research overview, results, and the **DrumCurate** dataset for **Cross-Request C
 
 [**Download the dataset (ZIP, approximately 306 MB)**](https://github.com/ianwonilkim/drumcurate/releases/download/v1.0/drumcurate-v1.0.zip) · [Checksums](https://github.com/ianwonilkim/drumcurate/releases/download/v1.0/SHA256SUMS)
 
-Links to the paper and public interactive demo will be added here.
+[**Open interactive demo**](https://enforcement-pack-labor-concentration.trycloudflare.com/demo)
+
+The paper link will be added when available.
 
 ## Overview
 
@@ -20,6 +22,8 @@ It combines a conditional variational autoencoder (CVAE) with two training metho
 At inference, the model generates a latent residual once and decodes it into a waveform, without iterative optimization.
 
 ## Interactive demo
+
+[**Launch demo**](https://enforcement-pack-labor-concentration.trycloudflare.com/demo)
 
 The demo runs Cross-Request CVAE on **15 selected examples: five each of Kick, Snare, and Hi-hat**.
 
