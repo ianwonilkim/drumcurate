@@ -1,0 +1,59 @@
+name: Prepare fixed demo URL
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/prepare-demo-pages.yml
+      - tools/import_public_demo.py
+      - demo/asset-manifest.json
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: prepare-demo-pages
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Copy and verify all published audio and interface assets
+        run: python3 tools/import_public_demo.py --output "${RUNNER_TEMP}/demo-site"
+      - name: Prepare the gh-pages publishing branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          staging="${RUNNER_TEMP}/demo-publishing"
+          if git ls-remote --exit-code --heads origin gh-pages > /dev/null; then
+            git fetch --no-tags origin gh-pages
+            git worktree add --detach "$staging" FETCH_HEAD
+          else
+            empty_tree=$(git hash-object -w -t tree /dev/null)
+            initial=$(git commit-tree "$empty_tree" -m 'Initialize public audio demo')
+            git worktree add --detach "$staging" "$initial"
+          fi
+          cp -a "${RUNNER_TEMP}/demo-site/." "$staging/"
+          git -C "$staging" add --all
+          if ! git -C "$staging" diff --cached --quiet; then
+            git -C "$staging" commit -m 'Publish verified 15-source DrumCurate demo'
+          fi
+          git -C "$staging" push origin HEAD:refs/heads/gh-pages
+      - name: Request a build when Pages is enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          if gh api "repos/${GITHUB_REPOSITORY}/pages" > /dev/null 2>&1; then
+            gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" > /dev/null
+          else
+            echo 'Demo files are ready. In Settings → Pages, select Deploy from a branch → gh-pages → /(root), then Save.' >> "$GITHUB_STEP_SUMMARY"
+            echo 'Target URL: https://ianwonilkim.github.io/drumcurate/' >> "$GITHUB_STEP_SUMMARY"
+          fi
