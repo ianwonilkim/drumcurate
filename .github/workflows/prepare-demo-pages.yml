@@ -8,6 +8,7 @@ on:
       - .github/workflows/prepare-demo-pages.yml
       - tools/import_public_demo.py
       - demo/asset-manifest.json
+      - demo/static/**
 
 permissions:
   contents: write

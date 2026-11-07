@@ -30,6 +30,7 @@ def main():
             raise ValueError("Invalid asset path")
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
+    seed = args.manifest.resolve().parent / "static"
 
     def copy(entry):
         path = output / entry["path"]
@@ -39,7 +40,10 @@ def main():
                 return
         if args.verify_only:
             raise ValueError("Missing or changed asset: " + entry["path"])
-        for attempt in range(4):
+        local = seed / entry["path"]
+        if local.is_file():
+            data = local.read_bytes()
+        for attempt in range(4) if not local.is_file() else ():
             try:
                 request = Request(SOURCE + entry["path"], headers={"User-Agent": USER_AGENT})
                 with urlopen(request, timeout=45) as response:

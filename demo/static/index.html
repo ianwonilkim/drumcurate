@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151719">
+  <meta name="color-scheme" content="dark">
+  <title>Cross-Request Supervision for Source-Conditioned Drum Sound Variation · Demo</title>
+  <style>
+    @font-face { font-family: Drum; src: url('font.woff2') format('woff2'); font-display: swap; }
+    :root { color-scheme: dark; --bg: #151719; --surface: #202326; --field: #171a1d; --plot: #101214; --line: #3d4349; --ink: #e0e4e8; --muted: #a2abb3; --accent: #d8b879; --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 12px/1.5 Drum, Arial, sans-serif; }
+    main { max-width: 1440px; margin: auto; padding: 0 24px 24px; }
+    .masthead { min-height: 86px; display: flex; align-items: center; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .paper-heading { min-width: 0; }
+    .demo-label { color: var(--muted); font: 9px/1.4 var(--mono); letter-spacing: 1px; }
+    h1 { font-size: 18px; line-height: 1.4; font-weight: 500; margin: 5px 0 0; color: var(--ink); }
+    .specs { margin-left: auto; flex-shrink: 0; display: flex; gap: 18px; color: var(--muted); font: 10px/1.4 var(--mono); }
+    .model-strip { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; color: var(--muted); font: 10px/1.4 var(--mono); letter-spacing: .6px; }
+    .workspace { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 12px; align-items: start; }
+    .output-area { display: grid; gap: 12px; min-width: 0; }
+    .panel { min-width: 0; border: 1px solid var(--line); background: var(--surface); }
+    .panel-heading { height: 39px; padding: 0 13px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); background: #25292d; }
+    .section-id { color: var(--accent); font: 11px/1 var(--mono); }
+    h2 { margin: 0; font: 500 11px/1.4 var(--mono); letter-spacing: 1.1px; }
+    .heading-detail { margin-left: auto; font: 10px/1.4 var(--mono); color: var(--muted); }
+    .panel-body { padding: 16px; }
+    .controls { display: grid; gap: 20px; }
+    label, legend { display: block; color: var(--muted); font-size: 11px; margin-bottom: 7px; }
+    label small, legend small { font: 9px/1.4 var(--mono); color: #8e98a2; margin-left: 6px; letter-spacing: .4px; }
+    select, button { border: 1px solid #535b63; background: var(--field); color: var(--ink); border-radius: 0; font: 12px/1.4 Drum, Arial, sans-serif; }
+    select { width: 100%; height: 36px; padding: 0 9px; font-family: var(--mono); font-size: 12px; }
+    button { cursor: pointer; padding: 7px 10px; }
+    button:hover { background: #33383d; border-color: #949da5; }
+    button:disabled { opacity: .4; cursor: default; }
+    button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    fieldset { padding: 0; margin: 0; border: 0; min-width: 0; }
+    .directions { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+    .directions button { height: 35px; padding: 6px 4px; font-size: 11px; white-space: nowrap; }
+    button.active { background: #393326; border-color: var(--accent); color: #efcf8f; }
+    .request { margin: 21px 0 16px; padding: 13px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; gap: 6px; }
+    .request-top { display: flex; align-items: center; justify-content: space-between; }
+    .request-label { color: var(--muted); font: 10px/1.5 var(--mono); letter-spacing: .6px; }
+    #request-scale { color: var(--accent); font: 14px/1.5 var(--mono); }
+    #request-values { color: var(--muted); font: 11px/1.4 var(--mono); text-align: right; }
+    button.primary { display: flex; align-items: center; justify-content: space-between; width: 100%; height: 39px; padding: 0 12px; background: #d8b879; color: #171a1d; border-color: #d8b879; font-weight: 700; }
+    button.primary:hover { background: #ebcd95; border-color: #ebcd95; }
+    button.primary::after { content: '↵'; font: 18px/1 var(--mono); }
+    #status { display: block; min-height: 16px; padding-top: 12px; color: var(--muted); font: 11px/1.5 Drum, Arial, sans-serif; }
+    #status::before { content: ''; display: inline-block; width: 5px; height: 5px; margin: 0 7px 1px 0; background: #9ba990; }
+    #status.error { color: #e99791; }
+    #status.error::before { background: #e99791; }
+    .audio-grid { padding: 0 14px; }
+    .audio-card { display: grid; grid-template-columns: 155px minmax(0, 1fr); gap: 15px; padding: 14px 0 10px; min-width: 0; }
+    .audio-card + .audio-card { border-top: 1px solid var(--line); }
+    .channel-meta { display: flex; flex-direction: column; min-width: 0; }
+    .channel-label { color: var(--muted); font: 10px/1.3 var(--mono); letter-spacing: .7px; margin-bottom: 7px; }
+    .audio-card strong { font: 12px/1.5 var(--mono), Drum, sans-serif; font-weight: 400; }
+    #result-caption { font-size: 10px; color: var(--muted); }
+    .transport { margin-top: auto; padding-top: 10px; display: flex; align-items: center; gap: 9px; }
+    .transport-button { height: 28px; min-width: 72px; padding: 3px 8px; font-size: 10px; }
+    .transport-button[aria-pressed=true] { border-color: var(--accent); color: var(--accent); background: #393326; }
+    a { color: var(--muted); text-decoration: none; font: 10px/1.4 var(--mono); }
+    a:hover { color: var(--accent); }
+    .wave-shell { min-width: 0; }
+    .waveform { display: block; width: 100%; height: 92px; border: 1px solid #343a40; background: var(--plot); }
+    .timecode { display: block; text-align: right; color: var(--muted); font: 9px/1.4 var(--mono); font-variant-numeric: tabular-nums; margin-top: 4px; }
+    audio { display: none; }
+    #empty { margin: 0 14px; padding: 13px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    #interpolation { padding: 12px 14px 14px; border-top: 1px solid var(--line); }
+    .section-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .section-head strong { font: 10px/1.4 var(--mono); letter-spacing: .8px; }
+    .section-head span { font-size: 10px; color: var(--muted); }
+    .path-controls { display: grid; grid-template-columns: minmax(0, 1fr) 175px; gap: 18px; align-items: center; }
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+    .steps button { height: 29px; padding: 3px 0; font: 11px/1 var(--mono); border-right-width: 0; }
+    .steps button:last-child { border-right-width: 1px; }
+    .steps button.active { box-shadow: inset 0 -2px var(--accent); }
+    .steps button.active + button { border-left-color: var(--accent); }
+    .position-control label { display: flex; justify-content: space-between; margin: 9px 0 4px; font-size: 10px; }
+    #position-label { color: var(--accent); font-family: var(--mono); }
+    input[type=range] { display: block; width: 100%; margin: 0; height: 16px; appearance: none; background: transparent; cursor: pointer; }
+    input[type=range]::-webkit-slider-runnable-track { height: 3px; background: #545c65; }
+    input[type=range]::-webkit-slider-thumb { appearance: none; height: 13px; width: 7px; background: var(--accent); border: 1px solid #f5dba9; border-radius: 0; margin-top: -5px; }
+    input[type=range]::-moz-range-track { height: 3px; background: #545c65; }
+    input[type=range]::-moz-range-thumb { height: 13px; width: 7px; background: var(--accent); border: 1px solid #f5dba9; border-radius: 0; }
+    .sequence { display: grid; gap: 6px; border-left: 1px solid var(--line); padding-left: 18px; }
+    #play-transition { font-size: 10px; height: 29px; padding: 4px 8px; }
+    #transition-time { text-align: center; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+    .metric { padding: 11px 15px 10px; border-right: 1px solid var(--line); background: #1a1d20; }
+    .metric:last-child { border-right: 0; }
+    .metric span { display: block; color: var(--muted); font-size: 10px; }
+    .metric strong { display: inline-block; margin-top: 3px; color: #e6e9ec; font: 400 25px/1.35 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -1px; }
+    .metric.focus strong { color: #e3c48c; }
+    .metric .unit { display: inline; margin-left: 5px; font: 9px/1 var(--mono); }
+    .measurement-body { padding: 12px 14px; }
+    .plot-header { display: flex; justify-content: space-between; gap: 10px; padding: 0 0 8px; color: var(--muted); font: 9px/1.4 var(--mono); letter-spacing: .5px; }
+    .plot-legend { display: flex; align-items: center; gap: 6px; }
+    .plot-legend i { width: 13px; border-top: 1px solid #d8b879; margin-left: 8px; }
+    .plot-legend i.target { border-color: #b7c0c7; border-top-style: dashed; }
+    #plot { display: block; width: 100%; height: 170px; background: var(--plot); border: 1px solid #343a40; }
+    .table-wrap { overflow-x: auto; max-width: 100%; margin-top: 12px; border: 1px solid var(--line); }
+    table { width: 100%; border-collapse: collapse; white-space: nowrap; font: 11px/1.4 var(--mono); font-variant-numeric: tabular-nums; }
+    th, td { text-align: right; padding: 7px 10px; }
+    th { border-bottom: 1px solid var(--line); color: var(--muted); background: #25292d; font: 10px/1.4 Drum, Arial, sans-serif; }
+    th:first-child, td:first-child { text-align: left; }
+    td { background: #1a1d20; }
+    td:first-child { color: #e3c48c; }
+    .notes { margin: 8px 0 0; text-align: right; color: var(--muted); font-size: 10px; }
+    .footer { display: flex; justify-content: space-between; gap: 10px; margin-top: 16px; padding-top: 10px; border-top: 1px solid var(--line); color: #929ca5; font: 9px/1.5 var(--mono); letter-spacing: .6px; }
+    @media (max-width: 1000px) {
+      main { padding: 0 16px 20px; }
+      .workspace { grid-template-columns: 220px minmax(0, 1fr); }
+      .audio-card { grid-template-columns: 125px minmax(0, 1fr); gap: 10px; }
+      .specs { gap: 8px; font-size: 9px; }
+      .path-controls { grid-template-columns: minmax(0, 1fr) 145px; gap: 10px; }
+      .sequence { padding-left: 10px; }
+      .metric { padding: 10px; }
+      .metric strong { font-size: 21px; }
+    }
+    @media (max-width: 760px) {
+      main { padding: 0 10px 20px; }
+      .masthead { min-height: 0; padding: 14px 0; }
+      h1 { font-size: 16px; line-height: 1.5; }
+      .specs { display: none; }
+      .model-strip { font-size: 8px; padding: 10px 0; }
+      .workspace { grid-template-columns: 1fr; }
+      .panel-body { padding: 13px; }
+      .controls { grid-template-columns: 1fr 1fr; gap: 13px; }
+      .sample-control { grid-column: 1 / -1; }
+      .request { margin: 14px 0 12px; padding: 10px 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+      .request-top { gap: 15px; }
+      .request-label { font-size: 9px; }
+      #request-scale { font-size: 12px; }
+      #request-values { font-size: 10px; }
+      #status { padding-top: 8px; }
+      .audio-card { grid-template-columns: 100px minmax(0, 1fr); }
+      .audio-card strong { font-size: 10px; }
+      .transport { gap: 6px; }
+      .transport-button { min-width: 58px; font-size: 9px; padding: 3px 5px; }
+      .waveform { height: 88px; }
+      .path-controls { grid-template-columns: 1fr; gap: 12px; }
+      .sequence { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-left: 0; padding: 0; }
+      #play-transition { width: 150px; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .plot-header { letter-spacing: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+<noscript>This audio demo needs JavaScript. Please enable it to select and play examples.</noscript>
+<main>
+  <header class="masthead"><div class="paper-heading"><span class="demo-label">INTERACTIVE AUDIO · PRECOMPUTED RESULTS</span><h1>Cross-Request Supervision for Source-Conditioned Drum Sound Variation</h1></div><div class="specs"><span>44.1 kHz</span><span>MONO</span><span>1.000 s</span></div></header>
+  <div class="model-strip"><span>CROSS-REQUEST CVAE</span><span id="selection-summary">INTERACTIVE DEMO</span></div>
+  <div class="workspace">
+    <section class="panel control-panel" aria-label="Example controls">
+      <div class="panel-heading"><span class="section-id">01</span><h2>CONTROL</h2></div>
+      <div class="panel-body">
+        <div class="controls">
+          <div class="sample-control"><label for="sample">Source <small id="sample-count"></small></label><select id="sample" disabled></select></div>
+          <div><label for="attribute">Timbre attribute</label><select id="attribute" disabled></select></div>
+          <fieldset><legend>Direction</legend><div class="directions"><button id="decrease" type="button" aria-pressed="false" disabled>− Decrease</button><button id="increase" type="button" aria-pressed="true" class="active" disabled>+ Increase</button></div></fieldset>
+        </div>
+        <div class="request"><div class="request-top"><span class="request-label">TARGET Δ</span><span id="request-scale">1.0 IQR</span></div><span id="request-values"></span></div>
+        <button class="primary" id="generate" disabled>Load result</button><span id="status" role="status" aria-live="polite">Loading</span>
+      </div>
+    </section>
+    <div class="output-area">
+      <section class="panel" aria-label="Original and generated audio">
+        <div class="panel-heading"><span class="section-id">02</span><h2>SIGNAL</h2><span class="heading-detail">WAVEFORM / TIME</span></div>
+        <div class="audio-grid">
+          <div class="audio-card">
+            <div class="channel-meta"><span class="channel-label">A / ORIGINAL</span><strong id="original-title">Original</strong><div class="transport"><button id="play-original" class="transport-button" disabled aria-label="Play original audio" aria-pressed="false">▶ Play</button><a id="download-original" download="original.wav" hidden>WAV ↓</a></div></div>
+            <div class="wave-shell"><svg class="waveform" id="wave-original" role="img" aria-label="Original audio waveform"></svg><output class="timecode" id="original-time">—</output></div>
+            <audio id="original" preload="auto"></audio>
+          </div>
+          <div class="audio-card">
+            <div class="channel-meta"><span class="channel-label">B / GENERATED</span><strong id="result-title">Choose a result</strong><span id="result-caption"></span><div class="transport"><button id="play-result" class="transport-button" disabled aria-label="Play generated audio" aria-pressed="false">▶ Play</button><a id="download-result" download="generated.wav" hidden>WAV ↓</a></div></div>
+            <div class="wave-shell"><svg class="waveform" id="wave-result" role="img" aria-label="Generated audio waveform"></svg><output class="timecode" id="result-time">—</output></div>
+            <audio id="result-audio" preload="auto"></audio>
+          </div>
+        </div>
+        <div id="empty">Choose a source, attribute and direction, then click Load result.</div>
+        <div id="interpolation" hidden>
+          <div class="section-head"><strong>INTERPOLATION</strong><span>0% reconstructed → 100% generated</span></div>
+          <div class="path-controls"><div class="position-control"><div class="steps" id="steps" role="group" aria-label="Interpolation steps"></div><label for="position">Position <output id="position-label">100%</output></label><input type="range" id="position" min="0" max="4" step="1" value="4"></div><div class="sequence"><button id="play-transition" disabled aria-pressed="false">▶ Play all 5 steps</button><output class="timecode" id="transition-time">—</output></div></div>
+          <audio id="transition" preload="auto"></audio>
+        </div>
+      </section>
+      <section class="panel" id="measurements" hidden>
+        <div class="panel-heading"><span class="section-id">03</span><h2>MEASUREMENT</h2><span id="measurement-title" class="heading-detail">AudioCommons</span></div>
+        <div class="metrics">
+          <div class="metric"><span>Reconstruction</span><strong id="baseline-value">—</strong></div>
+          <div class="metric"><span>Final target · ±1 IQR</span><strong id="target-value">—</strong></div>
+          <div class="metric focus"><span id="measured-label">Measured value</span><strong id="measured-value">—</strong></div>
+          <div class="metric focus"><span>Change from baseline</span><strong id="change-value">—</strong><span class="unit">IQR</span></div>
+        </div>
+        <div class="measurement-body">
+          <div class="plot-header"><span>DESCRIPTOR RESPONSE</span><span class="plot-legend"><i></i>MEASURED<i class="target"></i>TARGET</span></div>
+          <svg id="plot" viewBox="0 0 900 170" role="img" aria-label="Measured attribute values across interpolation steps and the final target"></svg>
+          <div class="table-wrap"><table><thead><tr><th>Attribute</th><th>1 IQR</th><th>Original</th><th>Reconstruction</th><th>Final target</th><th id="current-heading">Measured</th><th>Change / IQR</th></tr></thead><tbody id="values"></tbody></table></div>
+          <p class="notes" id="endpoint-error"></p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <p class="notes">Precomputed results from the same model, fixed inputs and fixed noise as the original generator. All 15 sources and all 210 requests are available, with five interpolation steps per request.</p>
+  <footer class="footer"><a href="credits.html">AUDIO CREDITS</a><a href="https://github.com/ianwonilkim/drumcurate">DATASET · GITHUB ↗</a></footer>
+</main>
+<script src="demo.js" defer></script>
+</body>
+</html>
