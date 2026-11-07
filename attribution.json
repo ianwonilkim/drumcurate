@@ -1,0 +1,259 @@
+[
+  {
+    "demo_name": "Kick \u00b7 296",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "ffc56e229fa2b5c640290fb8cdc989a9cdf11809b92528c1deaf0b4a2ad0c6b5",
+        "freesound_id": "496662",
+        "is_canonical_source": "true",
+        "sound_name": "KICK DJ SoMaR 9",
+        "creator": "DJ_SoMaR",
+        "creator_url": "https://freesound.org/people/DJ_SoMaR/",
+        "sound_url": "https://freesound.org/people/DJ_SoMaR/sounds/496662/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:27:56.729746+00:00",
+        "source_description": "Sonidos SoMaR",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Kick \u00b7 379",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "e6454aa22c6c3672dde6c70110b57e4ce3de97d2b88a519dc43771b9442cdfa3",
+        "freesound_id": "87173",
+        "is_canonical_source": "true",
+        "sound_name": "HARDSTYLE-08.wav",
+        "creator": "smokum",
+        "creator_url": "https://freesound.org/people/smokum/",
+        "sound_url": "https://freesound.org/people/smokum/sounds/87173/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:27:46.972278+00:00",
+        "source_description": "Hardstyle kicks",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Kick \u00b7 196",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "65fd49dcc7158e9992c06605a72b250729b7724287f7418d9876cc82b6e3814a",
+        "freesound_id": "13198",
+        "is_canonical_source": "true",
+        "sound_name": "ultrakik.aif",
+        "creator": "ramjac",
+        "creator_url": "https://freesound.org/people/ramjac/",
+        "sound_url": "https://freesound.org/people/ramjac/sounds/13198/",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_observed_at": "2026-07-24T07:14:24.049290+00:00",
+        "source_description": "a tough sounding kick drum from a public domain sample; heavily filtered and processed by me into a totally new sound using ultrabeat.",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Kick \u00b7 396",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "8f30a0326f5bd981b3825652b485c6ca929794d7455f7d745bf2bf6ee457eb66",
+        "freesound_id": "90672",
+        "is_canonical_source": "true",
+        "sound_name": "Deep Kick Cinematic.wav",
+        "creator": "Benboncan",
+        "creator_url": "https://freesound.org/people/Benboncan/",
+        "sound_url": "https://freesound.org/people/Benboncan/sounds/90672/",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_observed_at": "2026-07-24T07:14:01.244110+00:00",
+        "source_description": "An attempt to recreate a dramatic film trailer sound. Remix of (<a href=\"http://www.freesound.org/usersViewSingle.php?id=24119\" rel=\"nofollow\">http://www.freesound.org/usersViewSingle.php?id=24119</a>)            deepkickclean.wav by johnnypanic and another royalty free kick. Request by moeeom123.",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Kick \u00b7 368",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "7a700fe036a7bd7a64f1ba78d8711b49a411e98ca472bcc5f7e89675b7436cd2",
+        "freesound_id": "826758",
+        "is_canonical_source": "true",
+        "sound_name": "Kickin Wing",
+        "creator": "tboneaudio",
+        "creator_url": "https://freesound.org/people/tboneaudio/",
+        "sound_url": "https://freesound.org/people/tboneaudio/sounds/826758/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:27:50.719554+00:00",
+        "source_description": "Real recorded one shot sample of a 18x24 DW Performance Series Kick Drum!",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Snare \u00b7 876",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "c38c01b4dbafbb42eb1ad34e05ef660bb63deb78b7d099dcca759053f301df02",
+        "freesound_id": "614402",
+        "is_canonical_source": "true",
+        "sound_name": "SNARE_natural_full_strong_hit_1.wav",
+        "creator": "jannevse",
+        "creator_url": "https://freesound.org/people/jannevse/",
+        "sound_url": "https://freesound.org/people/jannevse/sounds/614402/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:29:01.162862+00:00",
+        "source_description": "Natural and full sounding snare with a little bit of compression. Snare hit was recorded with Neuman Neumann TLM 103 Large diaphragm microphone in studio by Janne Leimola.",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Snare \u00b7 996",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "72b10af190629231f6624beb39316e4395d2b687f92ba712e41e23d57461f0c1",
+        "freesound_id": "92255",
+        "is_canonical_source": "true",
+        "sound_name": "MPM14x5\u00bd E22 VELO2.wav",
+        "creator": "sandyrb",
+        "creator_url": "https://freesound.org/people/sandyrb/",
+        "sound_url": "https://freesound.org/people/sandyrb/sounds/92255/",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_observed_at": "2026-07-24T07:15:13.300758+00:00",
+        "source_description": "This 48KHz/24bit sample pack, which is intended for use with software such as Drumagog or Sound Replacer, contains 99 samples of a Mapex Pro-M 14x5\u00bd snare drum recorded with a choice of eleven different microphones and multiple velocity layers.  For each microphone choice there are nine velocity layers.  The microphones used were an AKG D202, an Audio Technica ATM250, an Audix D6, a Beyer Dynamic M201, an Electrovoice ND868, an Electrovoice RE20, a Josephson E22, a Lawson FET47, a Shure SM57 and a Shure SM7B.  The final microphone was the Josephson C720, a remarkable microphone of which only twenty were made to mark the Josephson company's 20th anniversary.  Placement of mic varied according to sensitivity and polar pattern.  Preamps used were Amek throughout and all sources were recorded directly to Pro Tools through Frontier Design Group and Digidesign converters.  Final editing and processing was carried out in Cool Edit Pro.",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Snare \u00b7 1030",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "5d52480c75301356f5a883f30d405e36a7f0b1a8e4861ed583b194970a6949c9",
+        "freesound_id": "92289",
+        "is_canonical_source": "true",
+        "sound_name": "MPM14x5\u00bd ND868 VELO9.wav",
+        "creator": "sandyrb",
+        "creator_url": "https://freesound.org/people/sandyrb/",
+        "sound_url": "https://freesound.org/people/sandyrb/sounds/92289/",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_observed_at": "2026-07-24T07:15:09.393828+00:00",
+        "source_description": "This 48KHz/24bit sample pack, which is intended for use with software such as Drumagog or Sound Replacer, contains 99 samples of a Mapex Pro-M 14x5\u00bd snare drum recorded with a choice of eleven different microphones and multiple velocity layers.  For each microphone choice there are nine velocity layers.  The microphones used were an AKG D202, an Audio Technica ATM250, an Audix D6, a Beyer Dynamic M201, an Electrovoice ND868, an Electrovoice RE20, a Josephson E22, a Lawson FET47, a Shure SM57 and a Shure SM7B.  The final microphone was the Josephson C720, a remarkable microphone of which only twenty were made to mark the Josephson company's 20th anniversary.  Placement of mic varied according to sensitivity and polar pattern.  Preamps used were Amek throughout and all sources were recorded directly to Pro Tools through Frontier Design Group and Digidesign converters.  Final editing and processing was carried out in Cool Edit Pro.\n",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Snare \u00b7 751",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "c060ce66d75b7af07242104a5fb321e00c1fbac98c61842c0008321686b58eb7",
+        "freesound_id": "36250",
+        "is_canonical_source": "true",
+        "sound_name": "HAIR ROCK SNARE 001.wav",
+        "creator": "sandyrb",
+        "creator_url": "https://freesound.org/people/sandyrb/",
+        "sound_url": "https://freesound.org/people/sandyrb/sounds/36250/",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "license_observed_at": "2026-07-24T07:15:01.854444+00:00",
+        "source_description": "Processed real snare drums from various sources. This snare sample has lots of processing and partials to create a huge sound reminiscent of eighties \"hair rock\" records.",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Snare \u00b7 696",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "bf8cb2fa188f9a336e3d2392d1a3a0e9735e8a307f6f2a13362885aacc99b1a6",
+        "freesound_id": "208380",
+        "is_canonical_source": "true",
+        "sound_name": "PPU-SNARE - Marker #155.wav",
+        "creator": "choomaque-crispydinner",
+        "creator_url": "https://freesound.org/people/choomaque-crispydinner/",
+        "sound_url": "https://freesound.org/people/choomaque-crispydinner/sounds/208380/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:28:29.140257+00:00",
+        "source_description": "Heavily processed, strongly compressed, tight and bright punchy tekky snare sound nice for producing technoid-neurofunk drum-n-bass",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Hi-hat \u00b7 1272",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "03b6b8386bd998f8b115adeba0aeb9a91e92113aab6e498ef2b400f85e718017",
+        "freesound_id": "496716",
+        "is_canonical_source": "true",
+        "sound_name": "SNARE DJ SoMaR 52",
+        "creator": "DJ_SoMaR",
+        "creator_url": "https://freesound.org/people/DJ_SoMaR/",
+        "sound_url": "https://freesound.org/people/DJ_SoMaR/sounds/496716/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:29:42.574174+00:00",
+        "source_description": "Sonidos SoMaR",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Hi-hat \u00b7 1257",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "673c25e3a82703f5b5859a191d59b065e165e7b8935a1df67e343bb5d00e38e2",
+        "freesound_id": "260407",
+        "is_canonical_source": "true",
+        "sound_name": "electribe-hats slice 43 [G-9].wav",
+        "creator": "soneproject",
+        "creator_url": "https://freesound.org/people/soneproject/",
+        "sound_url": "https://freesound.org/people/soneproject/sounds/260407/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:30:29.334230+00:00",
+        "source_description": "these are samples from the new korg electribe emx2 music production station not the best recording quality but some nice sounds anyway the weird naming is due to the autoslice function in renoise wich i used to separate the samples from a one shot recording",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Hi-hat \u00b7 1144",
+    "source": "dpk",
+    "sources": []
+  },
+  {
+    "demo_name": "Hi-hat \u00b7 1250",
+    "source": "freesound",
+    "sources": [
+      {
+        "sample_id": "0a4541174e42bbd38e748ed23ac9613cb7becf2a4ecd603c9d871f2b6711c5b2",
+        "freesound_id": "260397",
+        "is_canonical_source": "true",
+        "sound_name": "electribe-hats slice 5F.wav",
+        "creator": "soneproject",
+        "creator_url": "https://freesound.org/people/soneproject/",
+        "sound_url": "https://freesound.org/people/soneproject/sounds/260397/",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+        "license_observed_at": "2026-07-24T06:30:29.334230+00:00",
+        "source_description": "these are samples from the new korg electribe emx2 music production station not the best recording quality but some nice sounds anyway the weird naming is due to the autoslice function in renoise wich i used to separate the samples from a one shot recording\n",
+        "modifications": "Preprocessed to mono (channel arithmetic mean), 44100 Hz, 44100 samples, PCM16; tail threshold -50 dB relative to peak, smoothing 20 ms, margin 50 ms, fade 50 ms, normalized peak 0.89. See README.md."
+      }
+    ]
+  },
+  {
+    "demo_name": "Hi-hat \u00b7 1079",
+    "source": "dpk",
+    "sources": []
+  }
+]

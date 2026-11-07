@@ -1,0 +1,42 @@
+{
+  "attribute": "sharpness",
+  "direction": -1,
+  "iqr": 15.109035447565596,
+  "original_value": 36.9049756479768,
+  "baseline_value": 36.48838676442786,
+  "target": 21.379351316862262,
+  "steps": [
+    {
+      "position": 0.0,
+      "audio": "audio/676b0374064035138bc62672c87b83efaa98fcebbda3b5af627333330f908b4b.wav",
+      "value": 36.48838676442786,
+      "change_iqr": 0.0
+    },
+    {
+      "position": 0.25,
+      "audio": "audio/ceedbcd0efb57fde59c474a237ea73dc300a6970b6306bd43240925caaaef3af.wav",
+      "value": 32.29176516971227,
+      "change_iqr": -0.2777557580879034
+    },
+    {
+      "position": 0.5,
+      "audio": "audio/ec4cb73e2aab8d06d0c81130dd370398aa0502b9cfb3246740678b12b3efb5f0.wav",
+      "value": 28.21210037694014,
+      "change_iqr": -0.5477706645278415
+    },
+    {
+      "position": 0.75,
+      "audio": "audio/1ef2d348ee95ed76cd32c1a2cac573dd66948e7262404a40584665997657686f.wav",
+      "value": 25.566815161416237,
+      "change_iqr": -0.722850352751759
+    },
+    {
+      "position": 1.0,
+      "audio": "audio/460933069588b7db1bae38242da3adb04448913726c65640ad181624bd9e9e5e.wav",
+      "value": 24.28164098548784,
+      "change_iqr": -0.807910327651445
+    }
+  ],
+  "endpoint_absolute_error": 2.9022896686255777,
+  "transition": "audio/51ab200dc061d0eec4de7d28cbb9d702289d4a162618ebddd3e78991b2fe5bcb.wav"
+}
