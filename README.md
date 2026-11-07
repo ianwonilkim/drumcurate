@@ -6,7 +6,7 @@ Research overview, results, and the **DrumCurate** dataset for **Cross-Request C
 
 [**Download the dataset (ZIP, approximately 306 MB)**](https://github.com/ianwonilkim/drumcurate/releases/download/v1.0/drumcurate-v1.0.zip) · [Checksums](https://github.com/ianwonilkim/drumcurate/releases/download/v1.0/SHA256SUMS)
 
-[**Open interactive demo**](https://enforcement-pack-labor-concentration.trycloudflare.com/demo)
+[**Open interactive demo**](https://drumcurate.dibidibideep.chatgpt.site)
 
 The paper link will be added when available.
 
@@ -23,16 +23,16 @@ At inference, the model generates a latent residual once and decodes it into a w
 
 ## Interactive demo
 
-[**Launch demo**](https://enforcement-pack-labor-concentration.trycloudflare.com/demo)
+[**Launch demo**](https://drumcurate.dibidibideep.chatgpt.site)
 
-The demo runs Cross-Request CVAE on **15 selected examples: five each of Kick, Snare, and Hi-hat**.
+The demo provides precomputed Cross-Request CVAE results for **15 selected examples: five each of Kick, Snare, and Hi-hat**.
 
 Supported attributes:
 
 `brightness` · `depth` · `hardness` · `roughness` · `warmth` · `sharpness` · `boominess`
 
 1. Select a source, an attribute, and an increase or decrease direction.
-2. Click **Generate** to run the model for the request.
+2. Click **Load result** to retrieve the result for the request.
 3. Listen to the results at **0%, 25%, 50%, 75%, and 100% latent interpolation**.
 
 Compare the original recording with the outputs and download individual results as WAV files.
@@ -40,6 +40,7 @@ The display shows the target value and the selected AudioCommons descriptor meas
 
 The demo uses a request scale of **1.0 IQR**, based on the class- and attribute-specific interquartile range.
 The interpolation endpoints are the source codec reconstruction at 0% and the generated output at 100%.
+All 210 requests use the same model, source inputs, and fixed noise as the original online generator. The audio is precomputed so the demo remains accessible independently of the research server.
 
 ## Main results
 
