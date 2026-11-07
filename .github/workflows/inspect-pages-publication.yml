@@ -1,0 +1,38 @@
+name: Inspect Pages publication
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/inspect-pages-publication.yml]
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - name: Read Pages configuration and deployment status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.error
+          repo = os.environ['GITHUB_REPOSITORY']
+          headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'User-Agent': 'DrumCurate-Pages-diagnostics'}
+          paths = ['pages', 'pages/builds/latest', 'pages/deployments/78c9d0135b4fa03fe7958c46957275c224656d2a', 'pages/health']
+          for path in paths:
+              req = urllib.request.Request('https://api.github.com/repos/' + repo + '/' + path, headers=headers)
+              try:
+                  with urllib.request.urlopen(req, timeout=20) as response:
+                      data = json.load(response)
+                      fields = {key: data[key] for key in ('status', 'build_type', 'cname', 'html_url', 'source', 'error', 'message', 'errors', 'domain', 'alt_domain') if key in data}
+                      print(json.dumps({'resource': path, 'http_status': response.status, 'details': fields}, sort_keys=True))
+              except urllib.error.HTTPError as error:
+                  print(json.dumps({'resource': path, 'http_status': error.code}))
+              except Exception as error:
+                  print(json.dumps({'resource': path, 'error_type': type(error).__name__}))
+          PY
