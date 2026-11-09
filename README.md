@@ -40,7 +40,7 @@ The display shows the target value and the selected AudioCommons descriptor meas
 
 The demo uses a request scale of **1.0 IQR**, based on the class- and attribute-specific interquartile range.
 The interpolation endpoints are the source codec reconstruction at 0% and the generated output at 100%.
-All 210 requests use the same model, source inputs, and fixed noise as the original online generator. The audio is precomputed so the demo remains accessible independently of the research server.
+All 210 requests use the same model, source inputs, and fixed noise as the original online generator.
 
 ## Main results
 
