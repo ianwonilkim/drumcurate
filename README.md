@@ -6,7 +6,7 @@ Research overview, results, and the **DrumCurate** dataset for **Cross-Request C
 
 [**Download the dataset (ZIP, approximately 306 MB)**](https://github.com/ianwonilkim/drumcurate/releases/download/v1.0/drumcurate-v1.0.zip) · [Checksums](https://github.com/ianwonilkim/drumcurate/releases/download/v1.0/SHA256SUMS)
 
-[**Open interactive demo**](https://drumcurate.dibidibideep.chatgpt.site)
+[**Open interactive demo**](https://ianwonilkim.github.io/drumcurate/)
 
 The paper link will be added when available.
 
@@ -23,7 +23,7 @@ At inference, the model generates a latent residual once and decodes it into a w
 
 ## Interactive demo
 
-[**Launch demo**](https://drumcurate.dibidibideep.chatgpt.site)
+[**Launch demo**](https://ianwonilkim.github.io/drumcurate/)
 
 The demo provides precomputed Cross-Request CVAE results for **15 selected examples: five each of Kick, Snare, and Hi-hat**.
 
